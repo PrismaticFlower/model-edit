@@ -48,7 +48,7 @@ namespace swbf
 
             if (extension != ".model") continue;
 
-            tasks.Add(Task.Run(() => process_file(file, factor)));
+            tasks.Add(Task.Factory.StartNew(() => process_file(file, factor)));
          }
 
          Task.WaitAll(tasks.ToArray());
