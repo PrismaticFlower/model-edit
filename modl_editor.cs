@@ -27,7 +27,6 @@ namespace swbf
             var child = model.read_child();
 
             if (child.identifier == "shdw") edit_shadow(child, factor);
-            else if (child.identifier == "segm") edit_segment(child, factor);
          }
       }
 
@@ -36,17 +35,6 @@ namespace swbf
          var gshd = shadow.find_child("GSHD");
          var info = gshd.find_child("INFO");
          
-         info.seek(-8, SeekOrigin.End, false);
-
-         var current_count = info.read_uint32();
-         info.seek(-4, SeekOrigin.Current, false);
-         info.write_uint32(current_count / factor);
-      }
-
-      static void edit_segment(Ucfb_editor segment, uint factor)
-      {
-         var info = segment.find_child("INFO");
-
          info.seek(-8, SeekOrigin.End, false);
 
          var current_count = info.read_uint32();
