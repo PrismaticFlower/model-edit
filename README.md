@@ -31,6 +31,4 @@ First become aquinted with the basics of SWBF's [file structure](https://github.
 
 So this field is what the game's rendering engine uses to work out how hard it is working. This is fortunate for us because it the vertex buffers stored [elsewhere](https://github.com/SleepKiller/swbf-unmunge/blob/master/src/vbuf_reader.cpp) are what actually determine what's drawn. Using this simple peice of information we can change the engine's perceived "cost" of rendering a model to something a bit more inline with 2017 hardware. (Though the tool leaves it up to you to decide what exent.)
 
-Each segment and shadow also have similar fields, the tool edit's them as well although that is likely unnecessary. It didn't cause harm in my limited tests so I've left it in for completeness.
-
-Finally the game will also adjust the LOD info (stored in the `gmod` chunk). Each LOD for the model in this chunk also carries the face count of the model used for that step of LOD. These will also be edited. (What it doesn't do is touch LOD Bias as that can be controlled through the munger.
+Finally the tool will also adjust the LOD info (stored in the `gmod` chunk). Each LOD for the model in this chunk also carries the face count of the model used for that step of LOD. These will also be edited. (What it doesn't do is touch LOD Bias as that can be controlled through the munger.
