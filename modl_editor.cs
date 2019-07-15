@@ -21,25 +21,6 @@ namespace swbf
          var current_count = info.read_uint32();
          info.seek(-4, SeekOrigin.Current, false);
          info.write_uint32(current_count / factor);
-
-         while (!model.at_end)
-         {
-            var child = model.read_child();
-
-            if (child.identifier == "shdw") edit_shadow(child, factor);
-         }
-      }
-
-      static void edit_shadow(Ucfb_editor shadow, uint factor)
-      {
-         var gshd = shadow.find_child("GSHD");
-         var info = gshd.find_child("INFO");
-         
-         info.seek(-8, SeekOrigin.End, false);
-
-         var current_count = info.read_uint32();
-         info.seek(-4, SeekOrigin.Current, false);
-         info.write_uint32(current_count / factor);
       }
    }
 }
